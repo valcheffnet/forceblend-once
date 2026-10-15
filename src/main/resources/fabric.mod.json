@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "forceblend",
+  "id": "forceblendonce",
   "version": "${version}",
-  "name": "ForceBlend",
-  "description": "Prepares existing Overworld chunks for Minecraft's native terrain blending after seed, generator, or chunk-layout changes.",
+  "name": "ForceBlend Once",
+  "description": "Prepares existing Overworld chunks for Minecraft's native terrain blending, once per world, with a backup first. Fork of ForceBlend by mauro0805 with Minecraft 26.3 support.",
   "authors": [
-    "mauro0805"
+    "mauro0805",
+    "SasnycoN"
   ],
   "license": "MIT",
   "environment": "client",
@@ -24,7 +25,7 @@
     "fabricloader": ">=0.12.12",
     "minecraft": [
       ">=1.18 <=1.21.11",
-      ">=26.1 <=26.2"
+      ">=26.1 <=26.3"
     ],
     "java": ">=17"
   }

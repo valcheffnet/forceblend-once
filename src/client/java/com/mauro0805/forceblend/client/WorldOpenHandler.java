@@ -7,9 +7,17 @@ import com.mauro0805.forceblend.version.SupportedMinecraftVersions;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Loader-facing world lifecycle bridge shared by every version-specific mixin.
@@ -20,6 +28,9 @@ public final class WorldOpenHandler {
         "minecraft",
         "overworld"
     );
+
+    // ForceBlend Once: a world is prepared a single time. After that the marker file makes every later open a no-op.
+    private static final String MARKER_FILE = "forceblendonce.json";
 
     private WorldOpenHandler() {
     }
@@ -35,6 +46,12 @@ public final class WorldOpenHandler {
         Path overworldDirectory = Files.isDirectory(modernOverworld.resolve("region"))
             ? modernOverworld
             : worldDirectory;
+        Path marker = worldDirectory.resolve(MARKER_FILE);
+        if (Files.exists(marker)) {
+            ForceBlendClient.LOGGER.info("World '{}' was already prepared by ForceBlend Once, skipping", levelId);
+            return;
+        }
+
         String minecraftVersion = FabricLoader.getInstance()
             .getModContainer("minecraft")
             .map(container -> container.getMetadata().getVersion().getFriendlyString())
@@ -49,7 +66,9 @@ public final class WorldOpenHandler {
             profile.format()
         );
         try {
+            Path backup = backupRegions(worldDirectory, overworldDirectory.resolve("region"));
             ProcessingReport report = WorldProcessor.process(levelId, overworldDirectory, profile);
+            writeMarker(marker, minecraftVersion, report, backup);
             long elapsedMillis = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
             if (report.regionFiles() == 0) {
                 ForceBlendClient.LOGGER.info(
@@ -78,5 +97,42 @@ public final class WorldOpenHandler {
                 exception
             );
         }
+    }
+
+    /** Zips the Overworld region files next to the world before anything is changed. Returns null when there is nothing to save. */
+    private static Path backupRegions(Path worldDirectory, Path regionDirectory) throws IOException {
+        if (!Files.isDirectory(regionDirectory)) {
+            return null;
+        }
+        List<Path> regions;
+        try (Stream<Path> files = Files.list(regionDirectory)) {
+            regions = files.filter(file -> file.getFileName().toString().endsWith(".mca")).sorted().toList();
+        }
+        if (regions.isEmpty()) {
+            return null;
+        }
+        String stamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
+        Path backup = worldDirectory.resolve("forceblendonce-backup-" + stamp + ".zip");
+        try (OutputStream out = Files.newOutputStream(backup); ZipOutputStream zip = new ZipOutputStream(out)) {
+            for (Path region : regions) {
+                zip.putNextEntry(new ZipEntry("region/" + region.getFileName()));
+                Files.copy(region, zip);
+                zip.closeEntry();
+            }
+        }
+        ForceBlendClient.LOGGER.info("ForceBlend Once saved {} region files to {}", regions.size(), backup);
+        return backup;
+    }
+
+    private static void writeMarker(Path marker, String minecraftVersion, ProcessingReport report, Path backup) throws IOException {
+        String json = String.join("\n",
+            "{",
+            "  \"prepared\": \"" + LocalDateTime.now() + "\",",
+            "  \"minecraft\": \"" + minecraftVersion + "\",",
+            "  \"preparedChunks\": " + report.preparedChunks() + ",",
+            "  \"backup\": " + (backup == null ? "null" : "\"" + backup.getFileName() + "\""),
+            "}",
+            "");
+        Files.writeString(marker, json, StandardCharsets.UTF_8);
     }
 }

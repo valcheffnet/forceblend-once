@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Central registry for stable Minecraft release families and their storage profiles.
  */
 public final class SupportedMinecraftVersions {
-    public static final String SUPPORTED_RANGE = "1.18-1.21.11 and 26.1-26.2";
+    public static final String SUPPORTED_RANGE = "1.18-1.21.11 and 26.1-26.3";
 
     private static final int MINIMUM_DIRECT_DATA_VERSION = 2844;
     private static final int MINIMUM_SECTION = -4;
@@ -19,7 +19,7 @@ public final class SupportedMinecraftVersions {
         BlendingDataFormat.LEGACY_OLD_NOISE
     );
     private static final BlendingProfile SECTION_RANGE_PROFILE = profile(
-        "1.19-1.21.11 and 26.1-26.2",
+        "1.19-1.21.11 and 26.1-26.3",
         BlendingDataFormat.SECTION_RANGE
     );
 
@@ -52,8 +52,8 @@ public final class SupportedMinecraftVersions {
         if (major == 1 && (minor == 20 && patch <= 6 || minor == 21 && patch <= 11)) {
             return ReleaseFamily.MINECRAFT_1_20_5_TO_1_21_11;
         }
-        if (major == 26 && (minor == 1 || minor == 2 && patch == 0)) {
-            return ReleaseFamily.MINECRAFT_26_1_TO_26_2;
+        if (major == 26 && (minor == 1 || minor == 2 && patch == 0 || minor == 3 && patch == 0)) {
+            return ReleaseFamily.MINECRAFT_26_1_TO_26_3;
         }
         throw unsupported(version);
     }
@@ -81,7 +81,7 @@ public final class SupportedMinecraftVersions {
         MINECRAFT_1_19_TO_1_20_2(SECTION_RANGE_PROFILE),
         MINECRAFT_1_20_3_TO_1_20_4(SECTION_RANGE_PROFILE),
         MINECRAFT_1_20_5_TO_1_21_11(SECTION_RANGE_PROFILE),
-        MINECRAFT_26_1_TO_26_2(SECTION_RANGE_PROFILE);
+        MINECRAFT_26_1_TO_26_3(SECTION_RANGE_PROFILE);
 
         private final BlendingProfile profile;
 

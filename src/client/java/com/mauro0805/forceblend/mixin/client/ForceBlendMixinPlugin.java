@@ -21,7 +21,7 @@ public final class ForceBlendMixinPlugin implements IMixinConfigPlugin {
             case MINECRAFT_1_19_TO_1_20_2 -> "WorldOpenFlows119WorldOpenMixin";
             case MINECRAFT_1_20_3_TO_1_20_4 -> "WorldOpenFlows1203WorldOpenMixin";
             case MINECRAFT_1_20_5_TO_1_21_11 -> "WorldOpenFlows1205WorldOpenMixin";
-            case MINECRAFT_26_1_TO_26_2 -> "WorldOpenFlows26WorldOpenMixin";
+            case MINECRAFT_26_1_TO_26_3 -> "WorldOpenFlows26WorldOpenMixin";
         };
     }
 
