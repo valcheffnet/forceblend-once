@@ -3,16 +3,19 @@
   "id": "forceblendonce",
   "version": "${version}",
   "name": "ForceBlend Once",
-  "description": "Prepares existing Overworld chunks for Minecraft's native terrain blending, once per world, with a backup first. Fork of ForceBlend by mauro0805 with Minecraft 26.3 support.",
+  "description": "Prepares existing Overworld chunks for Minecraft's native terrain blending, once per world, with a backup first. Works in singleplayer and on dedicated servers. Fork of ForceBlend by mauro0805 with Minecraft 26.3 support.",
   "authors": [
     "mauro0805",
     "SasnycoN"
   ],
   "license": "MIT",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
     "client": [
       "com.mauro0805.forceblend.client.ForceBlendClient"
+    ],
+    "server": [
+      "com.mauro0805.forceblend.server.ForceBlendServer"
     ]
   },
   "mixins": [

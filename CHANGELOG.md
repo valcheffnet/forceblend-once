@@ -1,5 +1,9 @@
 # Changelog
 
+## ForceBlend Once 1.1.0
+
+- Dedicated server support. The mod runs once when the server starts, before the world is opened, on the `level-name` world from `server.properties`. Players do not need it.
+
 ## ForceBlend Once 1.0.0
 
 - Minecraft 26.3 support.

@@ -11,7 +11,9 @@ ForceBlend marks the chunks at the edge of an existing Overworld so that vanilla
 - Before it changes anything, it zips the Overworld region files into `forceblendonce-backup-<date>.zip` in the world folder.
 - The mod id is `forceblendonce`, so it can be told apart from the original.
 
-Everything else is the original code. Singleplayer only, client side, no Fabric API needed.
+- It also works on a dedicated server. There it runs at server start, before the world is opened, on the world named by `level-name` in `server.properties`.
+
+Everything else is the original code. No Fabric API needed. On a server, players do not need the mod.
 
 ## Limits
 
