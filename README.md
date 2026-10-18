@@ -1,6 +1,6 @@
 # ForceBlend Once
 
-A fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805 for Minecraft 26.3 on Fabric.
+A fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805 for Minecraft 26.3, on Fabric and NeoForge.
 
 ForceBlend marks the chunks at the edge of an existing Overworld so that vanilla terrain blending smooths the border when new chunks generate next to them. That helps after you change the world generator, for example when you remove a terrain mod like Terralith from a modpack. ForceBlend itself does not generate or move terrain, it only prepares the old chunks so vanilla can do the blending.
 
@@ -21,13 +21,17 @@ Blending only works between old chunks and chunks that do not exist yet. If both
 
 Keep your own backup of worlds you care about.
 
+## NeoForge
+
+The NeoForge version is in the `neoforge` folder and uses the same world code. It hooks `ServerAboutToStartEvent`, which NeoForge fires before the server loads its levels. That covers singleplayer and dedicated servers with one hook.
+
 ## Building
 
 ```
 ./gradlew build
 ```
 
-Needs Java 25. The jar is in `build/libs`.
+Needs Java 25. The Fabric jar is in `build/libs`. For NeoForge run the same command inside `neoforge`; its jar ends up in `neoforge/build/libs`.
 
 ## License
 

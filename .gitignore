@@ -13,3 +13,6 @@ logs/
 hs_err_pid*
 replay_pid*
 dist/
+neoforge/build/
+neoforge/.gradle/
+neoforge/run/

@@ -18,6 +18,9 @@ public final class WorldOpenHandler {
         if (!worldDirectory.startsWith(savesDirectory)) {
             throw new IllegalArgumentException("World id resolves outside the Minecraft saves directory: " + levelId);
         }
-        WorldPreparer.prepare(levelId, worldDirectory);
+        WorldPreparer.prepare(levelId, worldDirectory, FabricLoader.getInstance()
+            .getModContainer("minecraft")
+            .map(container -> container.getMetadata().getVersion().getFriendlyString())
+            .orElseThrow(() -> new IllegalStateException("Minecraft version metadata is unavailable")));
     }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## ForceBlend Once 1.1.0 for NeoForge
+
+- First NeoForge build, for NeoForge 26.3. It works the same way as the Fabric version, in singleplayer and on dedicated servers.
+
 ## ForceBlend Once 1.1.0
 
 - Dedicated server support. The mod runs once when the server starts, before the world is opened, on the `level-name` world from `server.properties`. Players do not need it.

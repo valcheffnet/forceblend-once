@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+issueTrackerURL="https://github.com/valcheffnet/forceblend-once/issues"
+
+[[mods]]
+modId="forceblendonce"
+version="${version}"
+displayName="ForceBlend Once"
+authors="mauro0805, SasnycoN"
+displayURL="https://github.com/valcheffnet/forceblend-once"
+description='''
+Prepares existing Overworld chunks for Minecraft's native terrain blending, once per world, with a backup first. Works in singleplayer and on dedicated servers. Fork of ForceBlend by mauro0805.
+'''
+
+[[dependencies.forceblendonce]]
+modId="neoforge"
+type="required"
+versionRange="[26.3,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.forceblendonce]]
+modId="minecraft"
+type="required"
+versionRange="[26.3,26.4)"
+ordering="NONE"
+side="BOTH"

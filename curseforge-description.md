@@ -1,4 +1,4 @@
-ForceBlend Once smooths the border between the terrain you already have and the terrain the game generates next to it. It is a fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805, updated for Minecraft 26.3.
+ForceBlend Once smooths the border between the terrain you already have and the terrain the game generates next to it. It is a fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805, updated for Minecraft 26.3 and available for Fabric and NeoForge.
 
 When you change the world generator of an existing world, for example by removing a terrain mod like Terralith from a modpack, new chunks come out different from the old ones. Where they meet you get walls and cliffs. Vanilla Minecraft can blend that border, but only for chunks that are marked for it. ForceBlend marks them.
 
@@ -25,6 +25,7 @@ After that you play as usual. When new chunks generate next to the marked ones, 
 - Runs once per world instead of on every open.
 - Backup zip before anything is changed.
 - Dedicated server support.
+- A NeoForge version.
 - Mod id `forceblendonce`.
 
 Source and license (MIT): https://github.com/valcheffnet/forceblend-once

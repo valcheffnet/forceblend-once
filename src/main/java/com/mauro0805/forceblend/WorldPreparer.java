@@ -4,7 +4,6 @@ import com.mauro0805.forceblend.processing.ProcessingReport;
 import com.mauro0805.forceblend.processing.WorldProcessor;
 import com.mauro0805.forceblend.version.BlendingProfile;
 import com.mauro0805.forceblend.version.SupportedMinecraftVersions;
-import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +37,7 @@ public final class WorldPreparer {
     private WorldPreparer() {
     }
 
-    public static void prepare(String levelId, Path worldDirectory) {
+    public static void prepare(String levelId, Path worldDirectory, String minecraftVersion) {
         Path modernOverworld = worldDirectory.resolve(MODERN_OVERWORLD_PATH);
         Path overworldDirectory = Files.isDirectory(modernOverworld.resolve("region"))
             ? modernOverworld
@@ -49,10 +48,6 @@ public final class WorldPreparer {
             return;
         }
 
-        String minecraftVersion = FabricLoader.getInstance()
-            .getModContainer("minecraft")
-            .map(container -> container.getMetadata().getVersion().getFriendlyString())
-            .orElseThrow(() -> new IllegalStateException("Minecraft version metadata is unavailable"));
         BlendingProfile profile = SupportedMinecraftVersions.profileFor(minecraftVersion);
         long startNanos = System.nanoTime();
 

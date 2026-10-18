@@ -38,6 +38,9 @@ public final class ForceBlendServer implements DedicatedServerModInitializer {
             WorldPreparer.LOGGER.info("No world at {} yet, nothing for ForceBlend Once to prepare", worldDirectory);
             return;
         }
-        WorldPreparer.prepare(levelName, worldDirectory);
+        WorldPreparer.prepare(levelName, worldDirectory, FabricLoader.getInstance()
+            .getModContainer("minecraft")
+            .map(container -> container.getMetadata().getVersion().getFriendlyString())
+            .orElseThrow(() -> new IllegalStateException("Minecraft version metadata is unavailable")));
     }
 }
