@@ -16,7 +16,7 @@ After that you play as usual. When new chunks generate next to the marked ones, 
 
 - Works in singleplayer and on dedicated servers. On a server it runs at startup, before the world is loaded, on the world set by `level-name` in `server.properties`. Players joining the server do not need the mod.
 - It only blends old chunks with chunks that do not exist yet. If both sides of a border are already generated, delete the side you do not want first.
-- If you removed a mod that added biomes or blocks, Fabric warns about missing content when you open the world. That warning is from Fabric, not from this mod.
+- If you removed a mod that added biomes or blocks, Fabric or NeoForge warns about missing content when you open the world. That warning comes from the loader, not from this mod.
 - Keep your own backup of worlds you care about, even with the zip.
 
 ## Changes from ForceBlend

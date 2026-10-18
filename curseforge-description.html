@@ -1,4 +1,4 @@
-<p>ForceBlend Once smooths the border between the terrain you already have and the terrain the game generates next to it. It is a fork of <a href="https://github.com/Mauro0805/ForceBlend">ForceBlend</a> by mauro0805, updated for Minecraft 26.3.</p>
+<p>ForceBlend Once smooths the border between the terrain you already have and the terrain the game generates next to it. It is a fork of <a href="https://github.com/Mauro0805/ForceBlend">ForceBlend</a> by mauro0805, updated for Minecraft 26.3 and available for Fabric and NeoForge.</p>
 <p>When you change the world generator of an existing world, for example by removing a terrain mod like Terralith from a modpack, new chunks come out different from the old ones. Where they meet you get walls and cliffs. Vanilla Minecraft can blend that border, but only for chunks that are marked for it. ForceBlend marks them.</p>
 <h2>What happens</h2>
 <p>The first time a world is opened with this mod, it:</p>
@@ -12,7 +12,7 @@
 <ul>
 <li>Works in singleplayer and on dedicated servers. On a server it runs at startup, before the world is loaded, on the world set by <code>level-name</code> in <code>server.properties</code>. Players joining the server do not need the mod.</li>
 <li>It only blends old chunks with chunks that do not exist yet. If both sides of a border are already generated, delete the side you do not want first.</li>
-<li>If you removed a mod that added biomes or blocks, Fabric warns about missing content when you open the world. That warning is from Fabric, not from this mod.</li>
+<li>If you removed a mod that added biomes or blocks, Fabric or NeoForge warns about missing content when you open the world. That warning comes from the loader, not from this mod.</li>
 <li>Keep your own backup of worlds you care about, even with the zip.</li>
 </ul>
 <h2>Changes from ForceBlend</h2>
@@ -21,6 +21,7 @@
 <li>Runs once per world instead of on every open.</li>
 <li>Backup zip before anything is changed.</li>
 <li>Dedicated server support.</li>
+<li>A NeoForge version.</li>
 <li>Mod id <code>forceblendonce</code>.</li>
 </ul>
 <p>Source and license (MIT): <a href="https://github.com/valcheffnet/forceblend-once">https://github.com/valcheffnet/forceblend-once</a></p>
