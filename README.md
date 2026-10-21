@@ -2,7 +2,9 @@
 
 A fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805 for Minecraft 26.3, on Fabric and NeoForge.
 
-ForceBlend marks the chunks at the edge of an existing Overworld so that vanilla terrain blending smooths the border when new chunks generate next to them. That helps after you change the world generator, for example when you remove a terrain mod like Terralith from a modpack. ForceBlend itself does not generate or move terrain, it only prepares the old chunks so vanilla can do the blending.
+**Download 1.1.0:** [Fabric jar](https://github.com/valcheffnet/forceblend-once/releases/download/v1.1.0/ForceBlendOnce-1.1.0.jar), [NeoForge jar](https://github.com/valcheffnet/forceblend-once/releases/download/v1.1.0-neoforge/ForceBlendOnce-neoforge-1.1.0.jar). Older versions are on the [releases page](https://github.com/valcheffnet/forceblend-once/releases), and the mod is also on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/forceblend-once).
+
+ForceBlend marks the chunks at the edge of an exisiting Overworld so that vanilla terrain blending smooths the border when new chunks generate next to them. That helps after you change the world generator, for example when you remove a terrain mod like Terralith from a modpack. ForceBlend itself does not generate or move terrain, it only prepares the old chunks so vanilla can do the blending.
 
 ## What this fork changes
 

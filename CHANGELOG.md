@@ -13,7 +13,7 @@
 - Minecraft 26.3 support.
 - Each world is prepared only once, a marker file is written after the first run.
 - The Overworld region files are zipped before anything is changed.
-- Mod id changed to `forceblendonce`.
+- Mod id chnaged to `forceblendonce`.
 
 
 This file records meaningful ForceBlend changes. The project follows [Semantic Versioning](https://semver.org/) from
