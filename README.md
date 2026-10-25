@@ -1,5 +1,7 @@
 # ForceBlend Once
 
+> This repository is archived. ForceBlend Once was merged back into ForceBlend 1.2.0, which Mauro0805 and SasnycoN maintain together at https://github.com/Mauro0805/ForceBlend. Downloads are on CurseForge: https://www.curseforge.com/minecraft/mc-mods/forceblend-once
+
 A fork of [ForceBlend](https://github.com/Mauro0805/ForceBlend) by mauro0805 for Minecraft 26.3, on Fabric and NeoForge.
 
 **Download 1.1.0:** [Fabric jar](https://github.com/valcheffnet/forceblend-once/releases/download/v1.1.0/ForceBlendOnce-1.1.0.jar), [NeoForge jar](https://github.com/valcheffnet/forceblend-once/releases/download/v1.1.0-neoforge/ForceBlendOnce-neoforge-1.1.0.jar). Older versions are on the [releases page](https://github.com/valcheffnet/forceblend-once/releases), and the mod is also on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/forceblend-once).
